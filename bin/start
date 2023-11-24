@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Chemin vers le dossier de l'application Next.js
+app_path="./app"
+
+# Chemin vers le dossier de l'API Adonis.js
+api_path="./api"
+
+# Fonction pour lancer une application avec npm run dev et afficher les logs
+start_app() {
+    cd $1
+    echo "Starting $1..."
+    npm run dev
+    cd ..
+}
+
+# Lancer les deux applications
+start_app $app_path &
+start_app $api_path &
+
+# Attendre que les applications se terminent
+wait
