@@ -60,7 +60,7 @@ Navigate to the project directory and execute the following command to install d
 Execute migrations to create the database tables :
 
    ```shell
-   adonis migration:run
+   node ace migration:run
    ```
 
 The website will be accessible at http://127.0.0.1:3000 and the API will be accessible at http://127.0.0.1:3333 in your browser.
