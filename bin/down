@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Chemin vers le dossier de l'API Adonis.js
+api_path="./api"
+
+# Chemin vers le dossier de l'application Next.js
+app_path="./app"
+
+# Fonction pour supprimer le container de l'api
+down_api() {
+    cd $1
+    echo "Remove $1..."
+    docker compose down
+    cd ..
+}
+
+# Fonction pour supprimer le container de l'app
+down_app() {
+    cd $1
+    echo "Remove $1..."
+    docker compose down
+    cd ..
+}
+
+# Supprimer les containers des deux applications
+down_api $api_path &
+down_app $app_path &
+
+# Attendre que les applications se terminent
+wait

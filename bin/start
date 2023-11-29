@@ -1,22 +1,30 @@
 #!/bin/bash
 
-# Chemin vers le dossier de l'application Next.js
-app_path="./app"
-
 # Chemin vers le dossier de l'API Adonis.js
 api_path="./api"
 
-# Fonction pour lancer une application avec npm run dev et afficher les logs
+# Chemin vers le dossier de l'application Next.js
+app_path="./app"
+
+# Fonction pour lancer l'api
+start_api() {
+    cd $1
+    echo "Starting $1..."
+    docker compose up -d
+    cd ..
+}
+
+# Fonction pour lancer l'app
 start_app() {
     cd $1
     echo "Starting $1..."
-    npm run dev
+    docker compose up -d
     cd ..
 }
 
 # Lancer les deux applications
+start_api $api_path &
 start_app $app_path &
-start_app $api_path &
 
 # Attendre que les applications se terminent
 wait

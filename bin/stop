@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Chemin vers le dossier de l'API Adonis.js
+api_path="./api"
+
+# Chemin vers le dossier de l'application Next.js
+app_path="./app"
+
+# Fonction pour éteindre l'api
+stop_api() {
+    cd $1
+    echo "Stop $1..."
+    docker compose stop
+    cd ..
+}
+
+# Fonction pour éteindre l'app
+stop_app() {
+    cd $1
+    echo "Stop $1..."
+    docker compose stop
+    cd ..
+}
+
+# Éteindre les deux applications
+stop_api $api_path &
+stop_app $app_path &
+
+# Attendre que les applications se terminent
+wait

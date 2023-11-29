@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Chemin vers le dossier de l'API Adonis.js
+api_path="./api"
+
+# Chemin vers le dossier de l'application Next.js
+app_path="./app"
+
+# Fonction pour build l'api
+build_api() {
+    cd $1
+    echo "Building $1..."
+    docker compose build
+    cd ..
+}
+
+# Fonction pour build l'app
+build_app() {
+    cd $1
+    echo "Building $1..."
+    docker compose build
+    cd ..
+}
+
+# Build les deux applications
+build_api $api_path &
+build_app $app_path &
+
+# Attendre que les applications se terminent
+wait
