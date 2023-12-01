@@ -21,7 +21,7 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.get('/', async () => {
-  return { hello: 'worlds' }
+  return { hello: 'world' }
 })
 
 Route.group(() => {
