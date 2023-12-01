@@ -9,6 +9,8 @@ services:
       - .:/api
     depends_on:
       - db
+    env_file:
+      - .env
     command: sh -c "npm install && npm run dev"
 
   db:
